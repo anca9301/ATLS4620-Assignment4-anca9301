@@ -1,4 +1,9 @@
-export default function SearchBar({searchText, setSearchText}) {
+import { useContext } from "react"
+import { SearchTextContext } from "./SearchTextContext"
+
+export default function SearchBar() {
+    const {searchText, setSearchText} = useContext(SearchTextContext)
+    
     return (
         <input 
         type="text" 

@@ -1,12 +1,9 @@
 import SearchBar from "./SearchBar";
 
-export default function SearchArea({searchText, setSearchText}) {
+export default function SearchArea() {
     return (
         <div>
-            <SearchBar 
-            searchText={searchText}
-            setSearchText={setSearchText}
-            />
+            <SearchBar/>
         </div>
     )
 }
