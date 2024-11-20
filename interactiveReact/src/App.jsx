@@ -1,35 +1,68 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+// import { useState } from 'react'
+// import reactLogo from './assets/react.svg'
+// import viteLogo from '/vite.svg'
+import { useDebugValue, useState } from 'react'
 import './App.css'
+import SearchArea from './SearchArea'
+import NoteBoard from './NoteBoard'
+import NoteCreation from './NoteCreation'
 
-function App() {
-  const [count, setCount] = useState(0)
+const notes = [
+  {
+    title: 'Test1',
+    body: 'this is a test',
+    favorite: false
+  },
+  {
+    title: 'how does this work?',
+    body: 'hopefully this works',
+    favorite: false
+  },
+  {
+    title: 'please',
+    body: 'please please',
+    favorite: false
+  }
+]
+
+export default function App() {
+  const [ searchText, setSearchText ] = useState('')
+  const [ inputTitle, setInputTitle ] = useState('once')
+  const [ inputBody, setInputBody ] = useState('checking2')
+  const [ showFavorites, setShowFavorites ] = useState(false)
+  const [ createNewNote, setCreateNewNote ] = useState(true)
+
+  if (createNewNote) {
+    setCreateNewNote(false)
+    const note = [{
+      title:{inputTitle},
+      body:{inputBody},
+      favorite:false
+    }]
+    
+    notes.push(note)
+    console.log(notes)
+  }
+
+  const filterSearch = notes.filter(note => {
+    let search = searchText.toLowerCase()
+    let title = note.title.toLowerCase()
+    let body = note.body.toLowerCase()
+    return (title.includes(search) || body.includes(search) )
+  }
+)
+  const filterFav = filterSearch.filter(note => 
+    showFavorites == true ? note.favorite : true
+  )
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <NoteCreation/>
+      <SearchArea
+      searchText = {searchText}
+      setSearchText = {setSearchText}
+      />
+      <NoteBoard notes={filterSearch}/>
     </>
   )
 }
-
-export default App
