@@ -2,8 +2,9 @@ import SearchBar from "./SearchBar";
 
 export default function SearchArea() {
     return (
-        <div>
+        <fieldset>
+            <legend>Search</legend>
             <SearchBar/>
-        </div>
+        </fieldset>
     )
 }

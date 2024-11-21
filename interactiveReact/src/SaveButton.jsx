@@ -7,7 +7,8 @@ export default function SaveButton() {
     return(
         <button
         className="saveButton"
-        onClick={createNewNote}
-        />
+        onClick={createNewNote}>
+            Save
+        </button>
     )
 }

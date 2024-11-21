@@ -7,8 +7,9 @@ export default function InputBody(){
     return (
         <input
         type="text"
-        className="note-input-body"
+        className="input-body"
         value={inputBody}
+        placeholder="Lorem Ipsum"
         onChange={(e)=> setInputBody(e.target.value)}
         />
     )

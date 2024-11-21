@@ -4,10 +4,11 @@ import SaveButton from "./SaveButton";
 
 export default function NoteCreation() {
     return (
-        <div>
-            <InputTitle/>
-            <InputBody/>
-            <SaveButton/>
-        </div>
+            <fieldset>
+                <legend>New Note</legend>
+                <InputTitle/>
+                <InputBody/>
+                <SaveButton/>
+            </fieldset>
     )
 }

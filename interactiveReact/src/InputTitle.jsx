@@ -7,8 +7,9 @@ export default function InputTitle(){
     return (
         <input 
         type="text" 
-        className="search-bar"
+        className="input-title"
         value={inputTitle}
+        placeholder="Title"
         onChange={(e)=> setInputTitle(e.target.value)}
         />
     )
